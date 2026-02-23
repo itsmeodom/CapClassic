@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Capital Classic 2026</title>
 
+    <!-- Pico.css (lightweight, GitHub Pages friendly) -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
     />
 
     <style>
+      /* Small, optional tweaks (kept minimal) */
       header.hero {
         padding-block: 3rem 2rem;
       }
@@ -40,6 +42,9 @@
         margin-right: 0.4rem;
         margin-bottom: 0.4rem;
       }
+      details summary {
+        cursor: pointer;
+      }
     </style>
   </head>
 
@@ -58,7 +63,9 @@
       </nav>
 
       <h1>Capital Classic 2026</h1>
-      <p class="muted"><strong>March 13–March 15</strong></p>
+      <p class="muted">
+        <strong>March 13–March 15</strong>
+      </p>
 
       <article>
         <h3 style="margin-bottom: 0.25rem;">Countdown to tee off</h3>
@@ -66,7 +73,7 @@
           Counting down to <strong>Friday, March 13, 2026</strong>
         </p>
 
-        <div class="grid-3">
+        <div class="grid-3" aria-live="polite">
           <article>
             <h2 class="countdown" id="cd-days">--</h2>
             <p class="muted">Days</p>
@@ -81,7 +88,7 @@
           </article>
         </div>
 
-        <p class="muted">
+        <p class="muted" style="margin-bottom: 0;">
           <span class="tag">Northern California</span>
           <span class="tag">12 players</span>
           <span class="tag">3 teams</span>
@@ -94,13 +101,12 @@
       <section id="about">
         <h2>About</h2>
         <p>
-          The Capital Classic is a team golf tournament in Northern California
-          starting on <strong>Friday, March 13</strong> and concluding on
-          <strong>Sunday, March 15</strong>.
+          The Capital Classic is a team golf tournament in Northern California starting on
+          <strong>Friday, March 13</strong> and concluding on <strong>Sunday, March 15</strong>.
         </p>
         <p>
-          12 players split into 3 teams as evenly as possible by handicap,
-          competing across 3 days.
+          We have <strong>12 players</strong> split into <strong>3 teams</strong> as evenly as we could by handicap,
+          and <strong>3 days</strong> of team golf competition.
         </p>
       </section>
 
@@ -108,43 +114,57 @@
         <h2>Games</h2>
 
         <details open>
-          <summary><strong>Day 1</strong>: Apple Mountain (Camino)</summary>
+          <summary><strong>Day 1</strong>: Apple Mountain (Camino) — Paired scramble</summary>
           <ul>
-            <li>Paired scramble format.</li>
             <li>
-              Two players hit, pair selects the preferred ball to continue play.
+              Paired scoring where 2 players hit a ball and the pair chooses which ball to play from.
             </li>
             <li>
-              Points awarded to the 4 pairs with the best net scores (Grint handicap).
+              Points awarded to the pairs with the <strong>4 best net scores</strong>
+              (calculated using Grint handicap).
             </li>
           </ul>
         </details>
 
         <details open>
-          <summary><strong>Day 2</strong>: The Ridge (Auburn)</summary>
+          <summary><strong>Day 2</strong>: The Ridge (Auburn) — Paired best ball</summary>
           <ul>
-            <li>Paired best ball competition.</li>
-            <li>Lower score of the pair counts each hole.</li>
             <li>
-              Points awarded to matchup winners based on total net score.
+              2v2 matchup where the <strong>lower score of a pair</strong> counts toward a team’s total score.
+              Example: if Player A shoots a 3 and Player B shoots a 4, the team records a 3 for that hole.
             </li>
-            <li>Bonus point for best net score of the day.</li>
+            <li>
+              Points awarded to the pairs that win their matchup — total net score
+              (calculated automatically in the app using Grint handicaps).
+            </li>
+            <li>Bonus point for the player with the <strong>best net score</strong> of the day.</li>
           </ul>
         </details>
 
         <details open>
-          <summary><strong>Day 3</strong>: Ancil Hoffman (Sacramento)</summary>
+          <summary><strong>Day 3</strong>: Ancil Hoffman (Sacramento) — Individual match play</summary>
           <ul>
-            <li>Individual match play.</li>
-            <li>Point gained per hole won.</li>
-            <li>Up to 3 points per matchup.</li>
-            <li>Bonus points for best net performances.</li>
+            <li>
+              1v1 matchup where a point is gained for each hole where you score better than your opponent.
+            </li>
+            <li>
+              Points awarded for each matchup won — up to <strong>3 points per matchup</strong> by winning a round
+              by at least 3 holes.
+            </li>
+            <li>Bonus point for the player with the <strong>best net score</strong> of the day.</li>
+            <li>
+              Additional bonus points for the player with the <strong>best combined net score</strong> over Day 2 and Day 3.
+            </li>
           </ul>
         </details>
       </section>
 
       <section id="teams">
         <h2>Teams</h2>
+        <p class="muted">
+          Teams were selected based on Grint handicap to ensure competitive play across 3 teams.
+        </p>
+
         <div class="grid-3">
           <article>
             <h3>Team 1: Ballaz</h3>
@@ -180,42 +200,51 @@
 
       <section id="pairings">
         <h2>Pairings</h2>
+        <p class="muted">
+          Groups will remain as listed; timing of each group is subject to change based on drama and hungoverness.
+        </p>
 
         <details open>
-          <summary><strong>Day 1</strong></summary>
+          <summary><strong>Day 1</strong> groups</summary>
           <ul>
-            <li>G1: Cameron, Ford, Rane, Dan</li>
-            <li>G2: Mitch, Sean, Drew, Adam</li>
-            <li>G3: Zion, Eric, Joe, Jared</li>
+            <li><strong>G1:</strong> Cameron, Ford, Rane, Dan</li>
+            <li><strong>G2:</strong> Mitch, Sean, Drew, Adam</li>
+            <li><strong>G3:</strong> Zion, Eric, Joe, Jared</li>
           </ul>
         </details>
 
         <details open>
-          <summary><strong>Day 2</strong></summary>
+          <summary><strong>Day 2</strong> matchups</summary>
           <ul>
-            <li>G1: Adam/Drew vs Joe/Zion</li>
-            <li>G2: Cameron/Ford vs Sean/Mitch</li>
-            <li>G3: Eric/Jared vs Rane/Dan</li>
+            <li><strong>G1:</strong> Adam/Drew (Ballaz) vs Joe/Zion (Impalaz)</li>
+            <li><strong>G2:</strong> Cameron/Ford (Shot Callaz) vs Sean/Mitch (Ballaz)</li>
+            <li><strong>G3:</strong> Eric/Jared (Impalaz) vs Rane/Dan (Shot Callaz)</li>
           </ul>
         </details>
 
         <details open>
-          <summary><strong>Day 3</strong></summary>
+          <summary><strong>Day 3</strong> matchups</summary>
           <ul>
-            <li>G1: Cameron vs Mitch | Joe vs Drew</li>
-            <li>G2: Adam vs Dan | Ford vs Eric</li>
-            <li>G3: Zion vs Sean | Rane vs Jared</li>
+            <li><strong>G1:</strong> Cameron (S) vs Mitch (B) &nbsp;|&nbsp; Joe (I) vs Drew (B)</li>
+            <li><strong>G2:</strong> Adam (B) vs Dan (S) &nbsp;|&nbsp; Ford (S) vs Eric (I)</li>
+            <li><strong>G3:</strong> Zion (I) vs Sean (B) &nbsp;|&nbsp; Rane (S) vs Jared (I)</li>
           </ul>
         </details>
       </section>
+
+
     </main>
 
     <footer class="container">
-      <small class="muted">Capital Classic 2026</small>
+      <small class="muted">
+        Capital Classic 2026
+      </small>
     </footer>
 
     <script>
-      const target = new Date(2026, 2, 13, 0, 0, 0);
+      // Countdown to March 13, 2026 (local time)
+      // If you want a specific timezone behavior, set the date using UTC and format accordingly.
+      const target = new Date(2026, 2, 13, 0, 0, 0); // Month is 0-based: 2 = March
 
       const elDays = document.getElementById("cd-days");
       const elHours = document.getElementById("cd-hours");
@@ -247,7 +276,7 @@
       }
 
       tick();
-      setInterval(tick, 1000);
+      setInterval(tick, 1000); // update frequently; display changes each minute
     </script>
   </body>
 </html>
