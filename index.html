@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Capital Classic 2026</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+
+    <style>
+      header.hero {
+        padding-block: 3rem 2rem;
+      }
+      .muted {
+        opacity: 0.8;
+      }
+      .countdown {
+        font-variant-numeric: tabular-nums;
+        letter-spacing: 0.02em;
+      }
+      .grid-3 {
+        display: grid;
+        gap: 1rem;
+      }
+      @media (min-width: 900px) {
+        .grid-3 {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      .tag {
+        display: inline-block;
+        padding: 0.25rem 0.6rem;
+        border-radius: 999px;
+        border: 1px solid var(--pico-muted-border-color);
+        background: var(--pico-card-background-color);
+        font-size: 0.9rem;
+        margin-right: 0.4rem;
+        margin-bottom: 0.4rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="container hero">
+      <nav>
+        <ul>
+          <li><strong>Capital Classic 2026</strong></li>
+        </ul>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#games">Games</a></li>
+          <li><a href="#teams">Teams</a></li>
+          <li><a href="#pairings">Pairings</a></li>
+        </ul>
+      </nav>
+
+      <h1>Capital Classic 2026</h1>
+      <p class="muted"><strong>March 13–March 15</strong></p>
+
+      <article>
+        <h3 style="margin-bottom: 0.25rem;">Countdown to tee off</h3>
+        <p class="muted" style="margin-top: 0;">
+          Counting down to <strong>Friday, March 13, 2026</strong>
+        </p>
+
+        <div class="grid-3">
+          <article>
+            <h2 class="countdown" id="cd-days">--</h2>
+            <p class="muted">Days</p>
+          </article>
+          <article>
+            <h2 class="countdown" id="cd-hours">--</h2>
+            <p class="muted">Hours</p>
+          </article>
+          <article>
+            <h2 class="countdown" id="cd-mins">--</h2>
+            <p class="muted">Minutes</p>
+          </article>
+        </div>
+
+        <p class="muted">
+          <span class="tag">Northern California</span>
+          <span class="tag">12 players</span>
+          <span class="tag">3 teams</span>
+          <span class="tag">3 days</span>
+        </p>
+      </article>
+    </header>
+
+    <main class="container">
+      <section id="about">
+        <h2>About</h2>
+        <p>
+          The Capital Classic is a team golf tournament in Northern California
+          starting on <strong>Friday, March 13</strong> and concluding on
+          <strong>Sunday, March 15</strong>.
+        </p>
+        <p>
+          12 players split into 3 teams as evenly as possible by handicap,
+          competing across 3 days.
+        </p>
+      </section>
+
+      <section id="games">
+        <h2>Games</h2>
+
+        <details open>
+          <summary><strong>Day 1</strong>: Apple Mountain (Camino)</summary>
+          <ul>
+            <li>Paired scramble format.</li>
+            <li>
+              Two players hit, pair selects the preferred ball to continue play.
+            </li>
+            <li>
+              Points awarded to the 4 pairs with the best net scores (Grint handicap).
+            </li>
+          </ul>
+        </details>
+
+        <details open>
+          <summary><strong>Day 2</strong>: The Ridge (Auburn)</summary>
+          <ul>
+            <li>Paired best ball competition.</li>
+            <li>Lower score of the pair counts each hole.</li>
+            <li>
+              Points awarded to matchup winners based on total net score.
+            </li>
+            <li>Bonus point for best net score of the day.</li>
+          </ul>
+        </details>
+
+        <details open>
+          <summary><strong>Day 3</strong>: Ancil Hoffman (Sacramento)</summary>
+          <ul>
+            <li>Individual match play.</li>
+            <li>Point gained per hole won.</li>
+            <li>Up to 3 points per matchup.</li>
+            <li>Bonus points for best net performances.</li>
+          </ul>
+        </details>
+      </section>
+
+      <section id="teams">
+        <h2>Teams</h2>
+        <div class="grid-3">
+          <article>
+            <h3>Team 1: Ballaz</h3>
+            <ul>
+              <li>Mitch</li>
+              <li>Sean</li>
+              <li>Drew</li>
+              <li>Adam</li>
+            </ul>
+          </article>
+
+          <article>
+            <h3>Team 2: Shot Callaz</h3>
+            <ul>
+              <li>Cameron</li>
+              <li>Ford</li>
+              <li>Rane</li>
+              <li>Dan</li>
+            </ul>
+          </article>
+
+          <article>
+            <h3>Team 3: Impalaz</h3>
+            <ul>
+              <li>Zion</li>
+              <li>Eric</li>
+              <li>Joe</li>
+              <li>Jared</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="pairings">
+        <h2>Pairings</h2>
+
+        <details open>
+          <summary><strong>Day 1</strong></summary>
+          <ul>
+            <li>G1: Cameron, Ford, Rane, Dan</li>
+            <li>G2: Mitch, Sean, Drew, Adam</li>
+            <li>G3: Zion, Eric, Joe, Jared</li>
+          </ul>
+        </details>
+
+        <details open>
+          <summary><strong>Day 2</strong></summary>
+          <ul>
+            <li>G1: Adam/Drew vs Joe/Zion</li>
+            <li>G2: Cameron/Ford vs Sean/Mitch</li>
+            <li>G3: Eric/Jared vs Rane/Dan</li>
+          </ul>
+        </details>
+
+        <details open>
+          <summary><strong>Day 3</strong></summary>
+          <ul>
+            <li>G1: Cameron vs Mitch | Joe vs Drew</li>
+            <li>G2: Adam vs Dan | Ford vs Eric</li>
+            <li>G3: Zion vs Sean | Rane vs Jared</li>
+          </ul>
+        </details>
+      </section>
+    </main>
+
+    <footer class="container">
+      <small class="muted">Capital Classic 2026</small>
+    </footer>
+
+    <script>
+      const target = new Date(2026, 2, 13, 0, 0, 0);
+
+      const elDays = document.getElementById("cd-days");
+      const elHours = document.getElementById("cd-hours");
+      const elMins = document.getElementById("cd-mins");
+
+      function pad2(n) {
+        return String(n).padStart(2, "0");
+      }
+
+      function tick() {
+        const now = new Date();
+        let diffMs = target - now;
+
+        if (diffMs <= 0) {
+          elDays.textContent = "0";
+          elHours.textContent = "00";
+          elMins.textContent = "00";
+          return;
+        }
+
+        const totalMinutes = Math.floor(diffMs / 60000);
+        const days = Math.floor(totalMinutes / (60 * 24));
+        const hours = Math.floor((totalMinutes - days * 60 * 24) / 60);
+        const mins = totalMinutes % 60;
+
+        elDays.textContent = String(days);
+        elHours.textContent = pad2(hours);
+        elMins.textContent = pad2(mins);
+      }
+
+      tick();
+      setInterval(tick, 1000);
+    </script>
+  </body>
+</html>
