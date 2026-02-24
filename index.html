@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,38 +12,242 @@
     />
 
     <style>
-      /* Small, optional tweaks (kept minimal) */
+      :root {
+        /* Team colors (keep mapping) */
+        --cc-navy: #0b1f3b;     /* Impalaz */
+        --cc-burgundy: #7a1e2c; /* Ballaz */
+        --cc-silver: #9ea3ad;   /* Shot Callaz */
+
+        /* Golf accents */
+        --cc-forest: #0b3d2e;   /* section headers */
+        --cc-gold: #b08d57;     /* subheaders */
+
+        /* Pico hints (keep light) */
+        --pico-primary: var(--cc-forest);
+        --pico-secondary: var(--cc-gold);
+        --pico-primary-hover: #082d22;
+        --pico-primary-focus: rgba(11, 61, 46, 0.18);
+
+        /* Slightly richer muted tone */
+        --pico-muted-color: rgba(0, 0, 0, 0.72);
+      }
+
+      /* Page background (light) */
+      body {
+        background: linear-gradient(
+          135deg,
+          rgba(11, 61, 46, 0.05),
+          rgba(176, 141, 87, 0.05)
+        );
+      }
+
       header.hero {
         padding-block: 3rem 2rem;
       }
+
+      h1 {
+        letter-spacing: -0.02em;
+      }
+
       .muted {
         opacity: 0.8;
       }
+
       .countdown {
         font-variant-numeric: tabular-nums;
         letter-spacing: 0.02em;
       }
+
       .grid-3 {
         display: grid;
         gap: 1rem;
       }
+
       @media (min-width: 900px) {
         .grid-3 {
           grid-template-columns: repeat(3, 1fr);
         }
       }
+
+      /* Card style (white cards on light background) */
+      .card {
+        background: #ffffff;
+        border: 1px solid var(--pico-muted-border-color);
+        border-radius: 1rem;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
+        padding: 1.25rem;
+
+        /* hero-style accent stripe + subtle tint */
+        border-top: 6px solid var(--cc-forest);
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 1),
+          rgba(11, 61, 46, 0.035)
+        );
+      }
+
+      main .card {
+        margin-bottom: 1rem;
+      }
+
+      /* Typography color rules */
+      h2 {
+        color: var(--cc-forest);
+        margin-top: 0;
+        margin-bottom: 0.75rem;
+      }
+
+      h3 {
+        color: var(--cc-gold);
+        margin-top: 0.25rem;
+      }
+
+      /* Tags */
       .tag {
         display: inline-block;
         padding: 0.25rem 0.6rem;
         border-radius: 999px;
-        border: 1px solid var(--pico-muted-border-color);
-        background: var(--pico-card-background-color);
+        background: var(--cc-forest);
+        color: white;
+        border: none;
         font-size: 0.9rem;
         margin-right: 0.4rem;
         margin-bottom: 0.4rem;
       }
+
+      .tag.alt {
+        background: var(--cc-gold);
+        color: #1b1b1b;
+      }
+
+      /* Details panels */
+      details {
+        background: #ffffff;
+        border: 1px solid var(--pico-muted-border-color);
+        border-radius: 0.9rem;
+        padding: 0.85rem 1rem;
+        margin-bottom: 0.75rem;
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.05);
+      }
+
       details summary {
         cursor: pointer;
+        font-weight: 650;
+        color: var(--cc-forest);
+      }
+
+      /* Teams */
+      .team-card {
+        background: #ffffff;
+        border: 1px solid var(--pico-muted-border-color);
+        border-radius: 1rem;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
+        padding: 1rem;
+      }
+
+      .team-ballaz {
+        border-left: 6px solid var(--cc-burgundy);
+        padding-left: 0.75rem;
+      }
+
+      .team-shotcallaz {
+        border-left: 6px solid var(--cc-silver);
+        padding-left: 0.75rem;
+      }
+
+      .team-impalaz {
+        border-left: 6px solid var(--cc-navy);
+        padding-left: 0.75rem;
+      }
+
+      /* Scoreboard */
+      .scoreboard-wrap {
+        margin-top: 1rem;
+      }
+
+      table.scoreboard td:last-child,
+      table.scoreboard th:last-child {
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+      }
+
+      tr.is-leader td {
+        font-weight: 800;
+      }
+
+      /* ===== Results rendering styles ===== */
+      .results-day {
+        margin-top: 1rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid var(--pico-muted-border-color);
+      }
+      .results-day:first-child {
+        border-top: none;
+        padding-top: 0;
+      }
+
+      .results-grid-2 {
+        display: grid;
+        gap: 1rem;
+      }
+      @media (min-width: 900px) {
+        .results-grid-2 {
+          grid-template-columns: 1.25fr 0.75fr;
+        }
+      }
+
+      .results-block {
+        background: #ffffff;
+        border: 1px solid var(--pico-muted-border-color);
+        border-radius: 0.9rem;
+        padding: 1rem;
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.05);
+      }
+
+      .mono {
+        font-variant-numeric: tabular-nums;
+      }
+
+      .pill {
+        display: inline-block;
+        padding: 0.2rem 0.55rem;
+        border-radius: 999px;
+        border: 1px solid var(--pico-muted-border-color);
+        background: rgba(255, 255, 255, 0.75);
+        font-size: 0.9rem;
+        margin-right: 0.35rem;
+        margin-bottom: 0.35rem;
+      }
+      .pill.b {
+        border-color: rgba(122, 30, 44, 0.35);
+      }
+      .pill.s {
+        border-color: rgba(158, 163, 173, 0.65);
+      }
+      .pill.i {
+        border-color: rgba(11, 31, 59, 0.35);
+      }
+
+      table.results-table td:last-child,
+      table.results-table th:last-child {
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+      }
+
+      footer {
+        margin-top: 2rem;
+      }
+      footer small {
+        opacity: 0.75;
+      }
+
+      @media (max-width: 480px) {
+        header.hero {
+          padding-block: 2rem 1rem;
+        }
+        .card {
+          padding: 1rem;
+        }
       }
     </style>
   </head>
@@ -59,32 +263,23 @@
           <li><a href="#games">Games</a></li>
           <li><a href="#teams">Teams</a></li>
           <li><a href="#pairings">Pairings</a></li>
+          <li><a href="#results">Results</a></li>
         </ul>
       </nav>
 
       <h1>Capital Classic 2026</h1>
-      <p class="muted">
-        <strong>March 13–March 15</strong>
-      </p>
+      <p class="muted"><strong>March 13–March 15</strong></p>
 
-      <article>
+      <article class="card">
         <h3 style="margin-bottom: 0.25rem;">Countdown to tee off</h3>
         <p class="muted" style="margin-top: 0;">
           Counting down to <strong>Friday, March 13, 2026</strong>
         </p>
 
-        <div class="grid-3" aria-live="polite">
+        <div class="grid-1" aria-live="polite">
           <article>
             <h2 class="countdown" id="cd-days">--</h2>
             <p class="muted">Days</p>
-          </article>
-          <article>
-            <h2 class="countdown" id="cd-hours">--</h2>
-            <p class="muted">Hours</p>
-          </article>
-          <article>
-            <h2 class="countdown" id="cd-mins">--</h2>
-            <p class="muted">Minutes</p>
           </article>
         </div>
 
@@ -94,59 +289,74 @@
           <span class="tag">3 teams</span>
           <span class="tag">3 days</span>
         </p>
+
+        <div class="scoreboard-wrap">
+          <h3 style="margin-bottom: 0.25rem;">Scoreboard</h3>
+          <p class="muted" style="margin-top: 0;">
+            Team points
+          </p>
+
+          <figure>
+            <table class="scoreboard" role="grid">
+              <thead>
+                <tr>
+                  <th scope="col">Team</th>
+                  <th scope="col">Points</th>
+                </tr>
+              </thead>
+              <tbody id="scoreboardBody"></tbody>
+            </table>
+          </figure>
+        </div>
       </article>
     </header>
 
     <main class="container">
-      <section id="about">
+      <section id="about" class="card">
         <h2>About</h2>
         <p>
           The Capital Classic is a team golf tournament in Northern California starting on
           <strong>Friday, March 13</strong> and concluding on <strong>Sunday, March 15</strong>.
         </p>
         <p>
-          We have <strong>12 players</strong> split into <strong>3 teams</strong> as evenly as we could by handicap,
-          and <strong>3 days</strong> of team golf competition.
+          <strong>12 players</strong> split by handicap into <strong>3 teams</strong>
+          for <strong>3 days</strong> of team golf competition.
         </p>
       </section>
 
-      <section id="games">
+      <section id="games" class="card">
         <h2>Games</h2>
 
         <details open>
           <summary><strong>Day 1</strong>: Apple Mountain (Camino) — Paired scramble</summary>
+          <p>Two players hit, pair selects the preferred ball to continue play.</p>
           <ul>
             <li>
-              Paired scoring where 2 players hit a ball and the pair chooses which ball to play from.
-            </li>
-            <li>
-              Points awarded to the pairs with the <strong>4 best net scores</strong>
-              (calculated using Grint handicap).
+              The pairs with the <strong>4 best net scores</strong>
+              (calculated using Grint handicap) will earn points for their team.
             </li>
           </ul>
         </details>
 
         <details open>
           <summary><strong>Day 2</strong>: The Ridge (Auburn) — Paired best ball</summary>
+          <p>
+            2v2 matchup where the <strong>lower score of a pair</strong> counts toward a team’s total score.
+            Example: if Player A shoots a 3 and Player B shoots a 4, the team records a 3 for that hole.
+          </p>
           <ul>
             <li>
-              2v2 matchup where the <strong>lower score of a pair</strong> counts toward a team’s total score.
-              Example: if Player A shoots a 3 and Player B shoots a 4, the team records a 3 for that hole.
+              Pairs that win their matchup
+              (calculated automatically in the app using Grint handicaps) earn 3 points for their team.
             </li>
-            <li>
-              Points awarded to the pairs that win their matchup — total net score
-              (calculated automatically in the app using Grint handicaps).
-            </li>
-            <li>Bonus point for the player with the <strong>best net score</strong> of the day.</li>
+            <li>Bonus point to the team with the player with the <strong>best net score</strong> of the day.</li>
           </ul>
         </details>
 
         <details open>
           <summary><strong>Day 3</strong>: Ancil Hoffman (Sacramento) — Individual match play</summary>
+          <p>1v1 matchup where a point is gained for each hole where you score better than your opponent.</p>
           <ul>
-            <li>
-              1v1 matchup where a point is gained for each hole where you score better than your opponent.
-            </li>
             <li>
               Points awarded for each matchup won — up to <strong>3 points per matchup</strong> by winning a round
               by at least 3 holes.
@@ -159,14 +369,14 @@
         </details>
       </section>
 
-      <section id="teams">
+      <section id="teams" class="card">
         <h2>Teams</h2>
         <p class="muted">
-          Teams were selected based on Grint handicap to ensure competitive play across 3 teams.
+          Teams were selected based on Grint handicap from January 2026 to ensure competitive play across 3 teams.
         </p>
 
         <div class="grid-3">
-          <article>
+          <article class="team-card team-ballaz">
             <h3>Team 1: Ballaz</h3>
             <ul>
               <li>Mitch</li>
@@ -176,7 +386,7 @@
             </ul>
           </article>
 
-          <article>
+          <article class="team-card team-shotcallaz">
             <h3>Team 2: Shot Callaz</h3>
             <ul>
               <li>Cameron</li>
@@ -186,7 +396,7 @@
             </ul>
           </article>
 
-          <article>
+          <article class="team-card team-impalaz">
             <h3>Team 3: Impalaz</h3>
             <ul>
               <li>Zion</li>
@@ -198,7 +408,7 @@
         </div>
       </section>
 
-      <section id="pairings">
+      <section id="pairings" class="card">
         <h2>Pairings</h2>
         <p class="muted">
           Groups will remain as listed; timing of each group is subject to change based on drama and hungoverness.
@@ -232,51 +442,320 @@
         </details>
       </section>
 
-
+      <!-- Results container (rendered from JS config) -->
+      <section id="results" class="card">
+        <h2>Results</h2>
+        <p class="muted" style="margin-top: -0.25rem;">
+          
+        </p>
+        <div id="resultsContent"></div>
+      </section>
     </main>
 
     <footer class="container">
-      <small class="muted">
-        Capital Classic 2026
-      </small>
+      <small class="muted">Capital Classic 2026</small>
     </footer>
 
+    <!-- Load RESULTS config (edit this file during tournament) -->
+    <script src="./results-config.js"></script>
+
     <script>
-      // Countdown to March 13, 2026 (local time)
-      // If you want a specific timezone behavior, set the date using UTC and format accordingly.
-      const target = new Date(2026, 2, 13, 0, 0, 0); // Month is 0-based: 2 = March
-
+      // =========================
+      // Countdown
+      // =========================
+      const target = new Date(2026, 2, 13, 0, 0, 0);
       const elDays = document.getElementById("cd-days");
-      const elHours = document.getElementById("cd-hours");
-      const elMins = document.getElementById("cd-mins");
-
-      function pad2(n) {
-        return String(n).padStart(2, "0");
-      }
 
       function tick() {
         const now = new Date();
-        let diffMs = target - now;
+        const diffMs = target - now;
 
         if (diffMs <= 0) {
           elDays.textContent = "0";
-          elHours.textContent = "00";
-          elMins.textContent = "00";
           return;
         }
 
         const totalMinutes = Math.floor(diffMs / 60000);
         const days = Math.floor(totalMinutes / (60 * 24));
-        const hours = Math.floor((totalMinutes - days * 60 * 24) / 60);
-        const mins = totalMinutes % 60;
-
         elDays.textContent = String(days);
-        elHours.textContent = pad2(hours);
-        elMins.textContent = pad2(mins);
       }
 
       tick();
-      setInterval(tick, 1000); // update frequently; display changes each minute
+      setInterval(tick, 1000);
+
+      // =========================
+      // Results + Auto-calc
+      // =========================
+      const TEAMS = ["Ballaz", "Shot Callaz", "Impalaz"];
+      const TEAM_PILLS = { Ballaz: "b", "Shot Callaz": "s", Impalaz: "i" };
+
+      function toInt(x) {
+        const n = Number(x);
+        return Number.isFinite(n) ? Math.trunc(n) : 0;
+      }
+
+      function pill(team) {
+        const cls = TEAM_PILLS[team] || "";
+        return `<span class="pill ${cls}">${team}</span>`;
+      }
+
+      function emptyTeamMap() {
+        return Object.fromEntries(TEAMS.map((t) => [t, 0]));
+      }
+
+      function addPoints(map, team, pts) {
+        if (!team || !map.hasOwnProperty(team)) return;
+        map[team] += toInt(pts);
+      }
+
+      function calcDay1Points(day1) {
+        const map = emptyTeamMap();
+        (day1.leaderboard || []).forEach((row) => {
+          // expects: { place, points, team, pairName, players }
+          addPoints(map, row.team, row.points);
+        });
+        return map;
+      }
+
+      function calcDay2Points(day2) {
+        const map = emptyTeamMap();
+
+        // +3 per matchup winner (default), but allow override pointsPerWin
+        const winPts = toInt(day2.pointsPerWin ?? 3);
+
+        (day2.matchups || []).forEach((m) => {
+          addPoints(map, m.winnerTeam, winPts);
+        });
+
+        // +1 best net (default), allow override bestNet.points
+        if (day2.bestNet && day2.bestNet.team) {
+          addPoints(map, day2.bestNet.team, toInt(day2.bestNet.points ?? 1));
+        }
+
+        return map;
+      }
+
+      function calcDay3Points(day3) {
+        const map = emptyTeamMap();
+
+        (day3.matchups || []).forEach((m) => {
+          // expects: { label, p1, p2, winnerName, winnerTeam, points }
+          addPoints(map, m.winnerTeam, m.points);
+        });
+
+        return map;
+      }
+
+      function sumMaps(a, b) {
+        const out = emptyTeamMap();
+        TEAMS.forEach((t) => {
+          out[t] = toInt(a[t]) + toInt(b[t]);
+        });
+        return out;
+      }
+
+      function calcAllPoints(RESULTS) {
+        const d1 = calcDay1Points(RESULTS.day1 || {});
+        const d2 = calcDay2Points(RESULTS.day2 || {});
+        const d3 = calcDay3Points(RESULTS.day3 || {});
+        const total = sumMaps(sumMaps(d1, d2), d3);
+        return { day1: d1, day2: d2, day3: d3, total };
+      }
+
+      function renderPointsEarned(map) {
+        const rows = TEAMS.map(
+          (team) => `<li class="mono">${pill(team)} — <strong>${toInt(map[team])}</strong></li>`
+        ).join("");
+
+        return `
+          <div class="results-block">
+            <p class="muted" style="margin-top:0;"><strong>Points earned</strong></p>
+            <ul style="margin-bottom:0;">${rows}</ul>
+          </div>
+        `;
+      }
+
+      function renderDay1(day1, ptsMap) {
+        const items = (day1.leaderboard || [])
+          .map((r) => {
+            const points = toInt(r.points);
+            const team = r.team || "—";
+            const label = r.pairName || `Team ${r.place || ""}`.trim();
+            const players = r.players || "";
+            return `
+              <li class="mono">
+                <strong>${label} (${points} point${points === 1 ? "" : "s"}):</strong>
+                ${team}${players ? " / " + players : ""}
+              </li>
+            `;
+          })
+          .join("");
+
+        return `
+          <div class="results-day">
+            <h3>${day1.title || "Day 1"}</h3>
+            <div class="results-grid-2">
+              <div class="results-block">
+                <p class="muted" style="margin-top:0;"><strong>Leaderboard (pairs)</strong></p>
+                <ol style="margin-bottom:0;">${items}</ol>
+              </div>
+              ${renderPointsEarned(ptsMap)}
+            </div>
+          </div>
+        `;
+      }
+
+      function renderDay2(day2, ptsMap) {
+        const winPts = toInt(day2.pointsPerWin ?? 3);
+
+        const matchupRows = (day2.matchups || [])
+          .map((m) => {
+            const header = `${m.label || ""}: ${(m.teamA?.players || []).join(" and ")} (${m.teamA?.team || ""}) vs ${(m.teamB?.players || []).join(" and ")} (${m.teamB?.team || ""})`
+              .replace(/^:\s*/, "")
+              .trim();
+
+            const scores = (m.playerScores || [])
+              .map((p) => `${p.name} — Gross ${p.gross} / Net ${p.net} (${p.team})`)
+              .join("<br />");
+
+            return `
+              <tr>
+                <td>
+                  <strong>${header}</strong><br />
+                  ${scores}
+                </td>
+                <td>
+                  Winner: <strong>${m.winnerTeam || "____"}</strong><br />
+                  Score: <strong>${m.score || "____"}</strong><br />
+                  <span class="muted">(+${winPts})</span>
+                </td>
+              </tr>
+            `;
+          })
+          .join("");
+
+        const bestNetLine = day2.bestNet
+          ? `${day2.bestNet.name || "____"} — ${day2.bestNet.team || "____"} — Net <strong>${day2.bestNet.net ?? "__"}</strong> <span class="muted">(+${
+              toInt(day2.bestNet.points ?? 1)
+            })</span>`
+          : `____ — ____ — Net <strong>__</strong> <span class="muted">(+1)</span>`;
+
+        return `
+          <div class="results-day">
+            <h3>${day2.title || "Day 2"}</h3>
+
+            <div class="results-block">
+              <p class="muted" style="margin-top:0;">
+                <strong>Matchups</strong> (winner + score + each player gross/net)
+              </p>
+              <figure>
+                <table class="results-table mono" role="grid">
+                  <thead>
+                    <tr>
+                      <th>Matchup</th>
+                      <th>Winner / Score</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${matchupRows}
+                  </tbody>
+                </table>
+              </figure>
+
+              <p class="muted" style="margin-bottom:0.25rem;"><strong>Best net score</strong></p>
+              <p class="mono" style="margin-top:0; margin-bottom:0;">
+                ${bestNetLine}
+              </p>
+            </div>
+
+            ${renderPointsEarned(ptsMap)}
+          </div>
+        `;
+      }
+
+      function renderDay3(day3, ptsMap) {
+        const rows = (day3.matchups || [])
+          .map((m) => {
+            return `
+              <tr class="mono">
+                <td>
+                  <strong>${m.label || ""}:</strong><br />
+                  ${m.p1?.name || "____"} (${m.p1?.team || "____"}) — Gross ${m.p1?.gross ?? "__"} / Net ${m.p1?.net ?? "__"}<br />
+                  ${m.p2?.name || "____"} (${m.p2?.team || "____"}) — Gross ${m.p2?.gross ?? "__"} / Net ${m.p2?.net ?? "__"}
+                </td>
+                <td>
+                  Winner: <strong>${m.winnerTeam || "____"}</strong><br />
+                  Points: <strong>${m.points ?? "__"}</strong>
+                </td>
+              </tr>
+            `;
+          })
+          .join("");
+
+        return `
+          <div class="results-day">
+            <h3>${day3.title || "Day 3"}</h3>
+
+            <div class="results-block">
+              <p class="muted" style="margin-top:0;">
+                <strong>Matchups</strong> (gross/net/team + winner + points won)
+              </p>
+
+              <figure>
+                <table class="results-table" role="grid">
+                  <thead>
+                    <tr>
+                      <th>Matchup</th>
+                      <th>Winner / Points</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${rows}
+                  </tbody>
+                </table>
+              </figure>
+            </div>
+
+            ${renderPointsEarned(ptsMap)}
+          </div>
+        `;
+      }
+
+      function renderScoreboard(totalMap) {
+        const scoreboardBody = document.getElementById("scoreboardBody");
+
+        const rows = TEAMS.map((team) => ({
+          team,
+          points: toInt(totalMap[team]),
+        })).sort((a, b) => (b.points !== a.points ? b.points - a.points : a.team.localeCompare(b.team)));
+
+        scoreboardBody.innerHTML = rows
+          .map(
+            (row, idx) => `
+              <tr class="${idx === 0 ? "is-leader" : ""}">
+                <td>${row.team}</td>
+                <td><strong>${row.points}</strong></td>
+              </tr>
+            `
+          )
+          .join("");
+      }
+
+      function renderResults(RESULTS) {
+        const points = calcAllPoints(RESULTS);
+
+        // Scoreboard uses TOTAL points auto-calculated from Results
+        renderScoreboard(points.total);
+
+        const el = document.getElementById("resultsContent");
+        el.innerHTML =
+          renderDay1(RESULTS.day1 || {}, points.day1) +
+          renderDay2(RESULTS.day2 || {}, points.day2) +
+          renderDay3(RESULTS.day3 || {}, points.day3);
+      }
+
+      // RESULTS is defined in results-config.js
+      renderResults(window.RESULTS);
     </script>
   </body>
 </html>
