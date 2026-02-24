@@ -1,168 +1,209 @@
-/* ===== Capital Classic: “Ryder Cup-ish” premium navy, lower contrast ===== */
+/* ===== Capital Classic: Navy page + light cards, navy text, burgundy headers ===== */
 /* Replace your entire styles.css with this */
 
 :root {
-  /* Navy family (slightly lifted to reduce harsh contrast) */
-  --cc-navy-900: #0f2542;  /* main card */
-  --cc-navy-850: #132c4f;  /* gradient stop */
-  --cc-navy-800: #18365f;  /* subtle borders/hover */
+  /* Brand */
+  --cc-navy: #0b1f3b;
+  --cc-navy-2: #08172c;
 
-  /* Burgundy accent (restrained) */
   --cc-burgundy: #7a1e2c;
   --cc-burgundy-2: #651824;
 
-  /* Neutral */
   --cc-silver: #9ea3ad;
 
-  /* “Soft white” text (reduces glare) */
-  --cc-ink: #0d1117;       /* body text on light background */
-  --cc-ivory: #f3f5f7;     /* primary text on navy */
-  --cc-ivory-muted: rgba(243, 245, 247, 0.78);
+  /* Light surfaces */
+  --cc-card: #ffffff;
+  --cc-card-2: #f7f8fa;
 
-  /* Pico */
+  /* Text */
+  --cc-ink: #0b1f3b;          /* navy text */
+  --cc-ink-muted: rgba(11, 31, 59, 0.72);
+
+  /* Pico overrides */
   --pico-primary: var(--cc-burgundy);
   --pico-primary-hover: var(--cc-burgundy-2);
-  --pico-primary-focus: rgba(122, 30, 44, 0.22);
-  --pico-secondary: var(--cc-navy-900);
-  --pico-muted-color: rgba(13, 17, 23, 0.72);
+  --pico-primary-focus: rgba(122, 30, 44, 0.20);
+
+  --pico-secondary: var(--cc-navy);
+
+  --pico-muted-color: var(--cc-ink-muted);
+
+  /* helps Pico borders on light cards */
+  --pico-muted-border-color: rgba(11, 31, 59, 0.14);
 }
 
-/* Light page background */
+/* ===== Page background ===== */
 body {
   color: var(--cc-ink);
   background:
-    radial-gradient(1200px 600px at 20% 0%, rgba(15, 37, 66, 0.10), transparent 55%),
-    radial-gradient(1000px 600px at 90% 10%, rgba(122, 30, 44, 0.08), transparent 55%),
-    linear-gradient(180deg, rgba(255,255,255,1), rgba(248,250,252,1));
+    radial-gradient(900px 520px at 18% 0%, rgba(122, 30, 44, 0.18), transparent 55%),
+    radial-gradient(900px 520px at 88% 0%, rgba(255, 255, 255, 0.10), transparent 55%),
+    linear-gradient(180deg, var(--cc-navy), var(--cc-navy-2));
 }
 
+/* Keep the main content readable against navy by default */
+main.container,
+header.container,
+footer.container {
+  color: var(--cc-ink);
+}
+
+/* Layout */
 header.hero {
   padding-block: 3rem 2rem;
 }
 
 h1 {
   letter-spacing: -0.02em;
+  color: #ffffff; /* hero title on navy background */
 }
 
-/* Utility */
-.muted { opacity: 0.85; }
+nav a,
+nav strong,
+header.hero p,
+header.hero li {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+nav a:hover {
+  color: rgba(255, 255, 255, 0.98);
+}
+
+.muted {
+  opacity: 1;
+  color: var(--cc-ink-muted);
+}
+
+header.hero .muted {
+  color: rgba(255, 255, 255, 0.72);
+}
+
 .countdown,
-.mono { font-variant-numeric: tabular-nums; }
-
-/* Grid */
-.grid-3 { display: grid; gap: 1rem; }
-@media (min-width: 900px) {
-  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+.mono {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
 }
 
-/* ===== Navy cards with softened text ===== */
+/* Grids */
+.grid-3 {
+  display: grid;
+  gap: 1rem;
+}
+@media (min-width: 900px) {
+  .grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ===== Card system: light cards on navy page ===== */
 .card,
 details,
 .team-card,
 .results-block {
-  color: var(--cc-ivory);
-  background: linear-gradient(135deg, var(--cc-navy-900), var(--cc-navy-850));
-  border: 1px solid rgba(255,255,255,0.16);
+  background: linear-gradient(180deg, var(--cc-card), var(--cc-card-2));
+  color: var(--cc-ink);
+
+  border: 1px solid rgba(255, 255, 255, 0.10); /* subtle edge against navy */
   border-radius: 1rem;
-  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.18);
+
+  box-shadow:
+    0 18px 44px rgba(0, 0, 0, 0.28),
+    0 2px 0 rgba(255, 255, 255, 0.04);
+
   padding: 1.25rem;
 }
 
-/* Burgundy stripe accent (subtle) */
+/* Subtle “event stripe” accent */
 .card {
-  border-top: 5px solid rgba(122, 30, 44, 0.92);
-}
-main .card { margin-bottom: 1rem; }
-
-/* Headings inside cards: off-white (not bright white) */
-.card h2, .card h3,
-details h2, details h3,
-.team-card h2, .team-card h3,
-.results-block h2, .results-block h3 {
-  color: var(--cc-ivory);
+  border-top: 6px solid rgba(122, 30, 44, 0.92);
 }
 
-h2 { margin-top: 0; margin-bottom: 0.75rem; }
-h3 { margin-top: 0.25rem; }
-
-/* Muted text inside navy cards */
-.card .muted,
-details .muted,
-.team-card .muted,
-.results-block .muted,
-footer .muted {
-  color: var(--cc-ivory-muted);
-  opacity: 1;
+main .card {
+  margin-bottom: 1rem;
 }
 
-/* Links (soft) */
-a {
-  color: rgba(243,245,247,0.92);
-  text-decoration-color: rgba(243,245,247,0.45);
-}
-a:hover {
-  color: rgba(255,255,255,0.98);
-  text-decoration-color: rgba(255,255,255,0.75);
+/* ===== Typography rules ===== */
+/* Section headers red, subheaders navy */
+h2 {
+  color: var(--cc-burgundy);
+  margin-top: 0;
+  margin-bottom: 0.75rem;
 }
 
-/* Nav links (since nav is in the hero container) */
-nav a { color: rgba(243,245,247,0.92); }
-nav a:hover { color: rgba(255,255,255,0.98); }
+h3 {
+  color: var(--cc-ink);
+  margin-top: 0.25rem;
+}
+
+/* Make details summaries feel like headings */
+details summary {
+  cursor: pointer;
+  font-weight: 650;
+  color: var(--cc-burgundy);
+}
 
 /* Dividers */
-hr { border-color: rgba(255,255,255,0.16); }
+hr {
+  border-color: rgba(11, 31, 59, 0.14);
+}
 
-/* Tags (more refined, less “badge-y”) */
+/* ===== Tags ===== */
 .tag {
   display: inline-block;
-  padding: 0.22rem 0.55rem;
+  padding: 0.25rem 0.6rem;
   border-radius: 999px;
-  background: rgba(255,255,255,0.10);
-  color: rgba(243,245,247,0.92);
-  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(11, 31, 59, 0.06);
+  color: var(--cc-ink);
+  border: 1px solid rgba(11, 31, 59, 0.12);
   font-size: 0.9rem;
   margin-right: 0.4rem;
   margin-bottom: 0.4rem;
 }
+
 .tag.alt {
-  background: rgba(122, 30, 44, 0.22);
-  border-color: rgba(122, 30, 44, 0.55);
+  background: rgba(122, 30, 44, 0.10);
+  border-color: rgba(122, 30, 44, 0.22);
+  color: var(--cc-burgundy);
 }
 
-/* Details */
-details { padding: 0.85rem 1rem; margin-bottom: 0.75rem; }
-details summary {
-  cursor: pointer;
-  font-weight: 650;
-  color: rgba(243,245,247,0.92);
+/* ===== Teams ===== */
+.team-card {
+  padding: 1rem;
 }
-
-/* Teams: keep mapping, but soften the left borders */
-.team-card { padding: 1rem; }
 
 .team-ballaz {
-  border-left: 6px solid rgba(122, 30, 44, 0.85);
-  padding-left: 0.75rem;
-}
-.team-shotcallaz {
-  border-left: 6px solid rgba(158, 163, 173, 0.75);
-  padding-left: 0.75rem;
-}
-.team-impalaz {
-  border-left: 6px solid rgba(24, 54, 95, 0.85);
+  border-left: 6px solid var(--cc-burgundy);
   padding-left: 0.75rem;
 }
 
-/* Tables readable on navy, with subtle separators */
-figure { margin: 0; }
-table { background: transparent; color: rgba(243,245,247,0.92); }
+.team-shotcallaz {
+  border-left: 6px solid rgba(158, 163, 173, 0.95);
+  padding-left: 0.75rem;
+}
+
+.team-impalaz {
+  border-left: 6px solid var(--cc-navy);
+  padding-left: 0.75rem;
+}
+
+/* ===== Scoreboard + results tables ===== */
+figure {
+  margin: 0;
+}
+
+table {
+  background: transparent;
+  color: var(--cc-ink);
+}
 
 table thead th {
-  color: rgba(243,245,247,0.92);
-  border-bottom-color: rgba(255,255,255,0.16);
+  color: var(--cc-ink);
+  border-bottom-color: rgba(11, 31, 59, 0.16);
 }
-table td, table th {
-  border-bottom-color: rgba(255,255,255,0.12);
+
+table td,
+table th {
+  border-bottom-color: rgba(11, 31, 59, 0.10);
 }
 
 table.scoreboard td:last-child,
@@ -173,60 +214,81 @@ table.results-table th:last-child {
   font-variant-numeric: tabular-nums;
 }
 
-/* Leader row: highlight with a low-contrast burgundy wash */
+/* Leader row: subtle burgundy tint */
 tr.is-leader td {
   font-weight: 800;
-  background: linear-gradient(
-    90deg,
-    rgba(122, 30, 44, 0.22),
-    rgba(122, 30, 44, 0.06)
-  );
+  background: linear-gradient(90deg, rgba(122, 30, 44, 0.10), rgba(122, 30, 44, 0.03));
 }
 
-/* Results layout */
+/* ===== Results layout ===== */
 .results-day {
   margin-top: 1rem;
   padding-top: 0.75rem;
-  border-top: 1px solid rgba(255,255,255,0.14);
+  border-top: 1px solid rgba(11, 31, 59, 0.12);
 }
-.results-day:first-child { border-top: none; padding-top: 0; }
 
-.results-grid-2 { display: grid; gap: 1rem; }
+.results-day:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.results-grid-2 {
+  display: grid;
+  gap: 1rem;
+}
 @media (min-width: 900px) {
-  .results-grid-2 { grid-template-columns: 1.25fr 0.75fr; }
+  .results-grid-2 {
+    grid-template-columns: 1.25fr 0.75fr;
+  }
 }
 
-/* Pills: softer */
+/* Pills */
 .pill {
   display: inline-block;
-  padding: 0.18rem 0.5rem;
+  padding: 0.2rem 0.55rem;
   border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.16);
-  background: rgba(255,255,255,0.09);
-  color: rgba(243,245,247,0.90);
+  border: 1px solid rgba(11, 31, 59, 0.14);
+  background: rgba(11, 31, 59, 0.05);
+  color: var(--cc-ink);
   font-size: 0.9rem;
   margin-right: 0.35rem;
   margin-bottom: 0.35rem;
 }
+
 .pill.b {
-  border-color: rgba(122, 30, 44, 0.55);
-  background: rgba(122, 30, 44, 0.18);
-}
-.pill.s {
-  border-color: rgba(158, 163, 173, 0.55);
-  background: rgba(158, 163, 173, 0.14);
-}
-.pill.i {
-  border-color: rgba(24, 54, 95, 0.55);
-  background: rgba(24, 54, 95, 0.18);
+  border-color: rgba(122, 30, 44, 0.22);
+  background: rgba(122, 30, 44, 0.10);
+  color: var(--cc-burgundy);
 }
 
-/* Footer */
-footer { margin-top: 2rem; }
-footer small { opacity: 0.85; }
+.pill.s {
+  border-color: rgba(158, 163, 173, 0.45);
+  background: rgba(158, 163, 173, 0.12);
+}
+
+.pill.i {
+  border-color: rgba(11, 31, 59, 0.22);
+  background: rgba(11, 31, 59, 0.08);
+  color: var(--cc-navy);
+}
+
+/* Footer on navy background */
+footer {
+  margin-top: 2rem;
+}
+footer small {
+  color: rgba(255, 255, 255, 0.70);
+}
 
 /* Mobile */
 @media (max-width: 480px) {
-  header.hero { padding-block: 2rem 1rem; }
-  .card, details, .team-card, .results-block { padding: 1rem; }
+  header.hero {
+    padding-block: 2rem 1rem;
+  }
+  .card,
+  details,
+  .team-card,
+  .results-block {
+    padding: 1rem;
+  }
 }
