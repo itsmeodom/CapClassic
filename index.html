@@ -285,15 +285,15 @@
 
         <p class="muted" style="margin-bottom: 0;">
           <span class="tag">Northern California</span>
-          <span class="tag">12 players</span>
+          <span class="tag alt">12 players</span>
           <span class="tag">3 teams</span>
-          <span class="tag">3 days</span>
+          <span class="tag alt">3 days</span>
         </p>
 
         <div class="scoreboard-wrap">
           <h3 style="margin-bottom: 0.25rem;">Scoreboard</h3>
           <p class="muted" style="margin-top: 0;">
-            Team points
+            Team points (auto-calculated from Results config).
           </p>
 
           <figure>
@@ -446,7 +446,7 @@
       <section id="results" class="card">
         <h2>Results</h2>
         <p class="muted" style="margin-top: -0.25rem;">
-          
+          Update <code>results-config.js</code>. Scoreboard + points earned are auto-calculated.
         </p>
         <div id="resultsContent"></div>
       </section>
@@ -511,7 +511,6 @@
       function calcDay1Points(day1) {
         const map = emptyTeamMap();
         (day1.leaderboard || []).forEach((row) => {
-          // expects: { place, points, team, pairName, players }
           addPoints(map, row.team, row.points);
         });
         return map;
@@ -519,15 +518,12 @@
 
       function calcDay2Points(day2) {
         const map = emptyTeamMap();
-
-        // +3 per matchup winner (default), but allow override pointsPerWin
         const winPts = toInt(day2.pointsPerWin ?? 3);
 
         (day2.matchups || []).forEach((m) => {
           addPoints(map, m.winnerTeam, winPts);
         });
 
-        // +1 best net (default), allow override bestNet.points
         if (day2.bestNet && day2.bestNet.team) {
           addPoints(map, day2.bestNet.team, toInt(day2.bestNet.points ?? 1));
         }
@@ -539,9 +535,18 @@
         const map = emptyTeamMap();
 
         (day3.matchups || []).forEach((m) => {
-          // expects: { label, p1, p2, winnerName, winnerTeam, points }
           addPoints(map, m.winnerTeam, m.points);
         });
+
+        // Day 3 best net bonus
+        if (day3.bestNet && day3.bestNet.team) {
+          addPoints(map, day3.bestNet.team, toInt(day3.bestNet.points ?? 1));
+        }
+
+        // Best combined (Day 2 + Day 3) bonus
+        if (day3.bestCombined && day3.bestCombined.team) {
+          addPoints(map, day3.bestCombined.team, toInt(day3.bestCombined.points ?? 1));
+        }
 
         return map;
       }
@@ -692,6 +697,18 @@
           })
           .join("");
 
+        const bestNetLine = day3.bestNet
+          ? `${day3.bestNet.name || "____"} — ${day3.bestNet.team || "____"} — Net <strong>${day3.bestNet.net ?? "__"}</strong> <span class="muted">(+${
+              toInt(day3.bestNet.points ?? 1)
+            })</span>`
+          : `____ — ____ — Net <strong>__</strong> <span class="muted">(+1)</span>`;
+
+        const bestCombinedLine = day3.bestCombined
+          ? `${day3.bestCombined.name || "____"} — ${day3.bestCombined.team || "____"} — Net <strong>${day3.bestCombined.net ?? "__"}</strong> <span class="muted">(+${
+              toInt(day3.bestCombined.points ?? 1)
+            })</span>`
+          : `____ — ____ — Net <strong>__</strong> <span class="muted">(+1)</span>`;
+
         return `
           <div class="results-day">
             <h3>${day3.title || "Day 3"}</h3>
@@ -714,6 +731,16 @@
                   </tbody>
                 </table>
               </figure>
+
+              <p class="muted" style="margin-bottom:0.25rem;"><strong>Best net score</strong> (bonus)</p>
+              <p class="mono" style="margin-top:0;">
+                ${bestNetLine}
+              </p>
+
+              <p class="muted" style="margin-bottom:0.25rem;"><strong>Best combined net (Day 2 + Day 3)</strong> (bonus)</p>
+              <p class="mono" style="margin-top:0; margin-bottom:0;">
+                ${bestCombinedLine}
+              </p>
             </div>
 
             ${renderPointsEarned(ptsMap)}
@@ -754,7 +781,6 @@
           renderDay3(RESULTS.day3 || {}, points.day3);
       }
 
-      // RESULTS is defined in results-config.js
       renderResults(window.RESULTS);
     </script>
   </body>
