@@ -1,11 +1,10 @@
+// results-config.js
 // Edit only this file during the tournament.
 // Keep team names EXACTLY: "Ballaz", "Shot Callaz", "Impalaz"
 
 window.RESULTS = {
   day1: {
     title: "Day 1 — Apple Mountain (Paired scramble)",
-    // Day 1 is just a ranked list of pairs with points and which TEAM gets those points.
-    // You can name the pair anything (pairName) and list players however you like.
     leaderboard: [
       { place: 1, pairName: "Team 1", points: 4, team: "Ballaz", players: "Adam / Drew" },
       { place: 2, pairName: "Team 2", points: 3, team: "Shot Callaz", players: "Cameron / Ford" },
@@ -18,7 +17,7 @@ window.RESULTS = {
 
   day2: {
     title: "Day 2 — The Ridge (Paired best ball)",
-    pointsPerWin: 3, // auto-adds to winnerTeam for each matchup
+    pointsPerWin: 3,
     matchups: [
       {
         label: "G1",
@@ -61,8 +60,8 @@ window.RESULTS = {
       },
     ],
     bestNet: {
-      name: "____",
-      team: "____", // this team gets the bonus automatically
+      name: "Dan",
+      team: "Shot Callaz",
       net: "__",
       points: 1,
     },
@@ -70,14 +69,13 @@ window.RESULTS = {
 
   day3: {
     title: "Day 3 — Ancil Hoffman (Individual match play)",
-    // Day 3: YOU enter points awarded for each matchup (0–3) and which TEAM won.
     matchups: [
       {
         label: "G1-A",
         p1: { name: "Cameron", team: "Shot Callaz", gross: "__", net: "__" },
         p2: { name: "Mitch", team: "Ballaz", gross: "__", net: "__" },
-        winnerTeam: "____",
-        points: "__",
+        winnerTeam: "Ballaz",
+        points: "3",
       },
       {
         label: "G1-B",
@@ -115,5 +113,21 @@ window.RESULTS = {
         points: "__",
       },
     ],
+
+    // New: Day 3 best net score (+1 by default)
+    bestNet: {
+      name: "Rane",
+      team: "Shot Callaz",
+      net: "__",
+      points: 1,
+    },
+
+    // New: Best combined net (Day 2 + Day 3) bonus (set points as desired)
+    bestCombined: {
+      name: "Rane",
+      team: "Shot Callaz",
+      net: "__",     // combined net
+      points: 2,     // set this to whatever your rules are
+    },
   },
 };
