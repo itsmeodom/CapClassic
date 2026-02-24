@@ -1,36 +1,41 @@
-/* ===== Capital Classic Theme: Light page + Navy cards + Burgundy accents ===== */
+/* ===== Capital Classic: “Ryder Cup-ish” premium navy, lower contrast ===== */
 /* Replace your entire styles.css with this */
 
 :root {
-  /* Core palette */
-  --cc-navy: #0b1f3b;
-  --cc-navy-2: #08172c;
+  /* Navy family (slightly lifted to reduce harsh contrast) */
+  --cc-navy-900: #0f2542;  /* main card */
+  --cc-navy-850: #132c4f;  /* gradient stop */
+  --cc-navy-800: #18365f;  /* subtle borders/hover */
+
+  /* Burgundy accent (restrained) */
   --cc-burgundy: #7a1e2c;
   --cc-burgundy-2: #651824;
+
+  /* Neutral */
   --cc-silver: #9ea3ad;
 
-  /* Pico overrides (still light theme overall) */
+  /* “Soft white” text (reduces glare) */
+  --cc-ink: #0d1117;       /* body text on light background */
+  --cc-ivory: #f3f5f7;     /* primary text on navy */
+  --cc-ivory-muted: rgba(243, 245, 247, 0.78);
+
+  /* Pico */
   --pico-primary: var(--cc-burgundy);
   --pico-primary-hover: var(--cc-burgundy-2);
   --pico-primary-focus: rgba(122, 30, 44, 0.22);
-
-  /* Links / secondary hints */
-  --pico-secondary: var(--cc-navy);
-
-  /* Muted text baseline for light areas */
-  --pico-muted-color: rgba(0, 0, 0, 0.72);
+  --pico-secondary: var(--cc-navy-900);
+  --pico-muted-color: rgba(13, 17, 23, 0.72);
 }
 
 /* Light page background */
 body {
-  background: linear-gradient(
-    135deg,
-    rgba(11, 31, 59, 0.06),
-    rgba(122, 30, 44, 0.05)
-  );
+  color: var(--cc-ink);
+  background:
+    radial-gradient(1200px 600px at 20% 0%, rgba(15, 37, 66, 0.10), transparent 55%),
+    radial-gradient(1000px 600px at 90% 10%, rgba(122, 30, 44, 0.08), transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,1), rgba(248,250,252,1));
 }
 
-/* Layout tweaks */
 header.hero {
   padding-block: 3rem 2rem;
 }
@@ -39,163 +44,127 @@ h1 {
   letter-spacing: -0.02em;
 }
 
-.muted {
-  opacity: 0.82;
-}
-
-/* Countdown numerals */
+/* Utility */
+.muted { opacity: 0.85; }
 .countdown,
-.mono {
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.02em;
-}
+.mono { font-variant-numeric: tabular-nums; }
 
-/* Grids */
-.grid-3 {
-  display: grid;
-  gap: 1rem;
-}
+/* Grid */
+.grid-3 { display: grid; gap: 1rem; }
 @media (min-width: 900px) {
-  .grid-3 {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
 }
 
-/* ===== Card System: Navy cards on light page ===== */
+/* ===== Navy cards with softened text ===== */
 .card,
 details,
 .team-card,
 .results-block {
-  background: linear-gradient(135deg, var(--cc-navy), var(--cc-navy-2));
-  color: #fff;
-
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--cc-ivory);
+  background: linear-gradient(135deg, var(--cc-navy-900), var(--cc-navy-850));
+  border: 1px solid rgba(255,255,255,0.16);
   border-radius: 1rem;
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.16);
-
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.18);
   padding: 1.25rem;
 }
 
-/* Burgundy top accent stripe to match your “hero” vibe */
+/* Burgundy stripe accent (subtle) */
 .card {
-  border-top: 6px solid var(--cc-burgundy);
+  border-top: 5px solid rgba(122, 30, 44, 0.92);
 }
-main .card {
-  margin-bottom: 1rem;
+main .card { margin-bottom: 1rem; }
+
+/* Headings inside cards: off-white (not bright white) */
+.card h2, .card h3,
+details h2, details h3,
+.team-card h2, .team-card h3,
+.results-block h2, .results-block h3 {
+  color: var(--cc-ivory);
 }
 
-/* Typography inside navy cards */
-.card h2,
-.card h3,
-.card p,
-.card li,
-.card small,
-.card label {
-  color: #fff;
-}
+h2 { margin-top: 0; margin-bottom: 0.75rem; }
+h3 { margin-top: 0.25rem; }
 
-h2 {
-  margin-top: 0;
-  margin-bottom: 0.75rem;
-}
-h3 {
-  margin-top: 0.25rem;
-}
-
-/* Keep muted text readable on navy */
+/* Muted text inside navy cards */
 .card .muted,
 details .muted,
 .team-card .muted,
 .results-block .muted,
 footer .muted {
-  opacity: 0.78;
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--cc-ivory-muted);
+  opacity: 1;
 }
 
-/* Links */
+/* Links (soft) */
 a {
-  color: rgba(255, 255, 255, 0.92);
-  text-decoration-color: rgba(255, 255, 255, 0.45);
+  color: rgba(243,245,247,0.92);
+  text-decoration-color: rgba(243,245,247,0.45);
 }
 a:hover {
-  color: #ffffff;
-  text-decoration-color: rgba(255, 255, 255, 0.75);
+  color: rgba(255,255,255,0.98);
+  text-decoration-color: rgba(255,255,255,0.75);
 }
 
-/* Nav: make links readable without changing HTML */
-nav a {
-  color: rgba(255, 255, 255, 0.92);
-}
-nav a:hover {
-  color: #fff;
-}
+/* Nav links (since nav is in the hero container) */
+nav a { color: rgba(243,245,247,0.92); }
+nav a:hover { color: rgba(255,255,255,0.98); }
 
-/* Tags */
+/* Dividers */
+hr { border-color: rgba(255,255,255,0.16); }
+
+/* Tags (more refined, less “badge-y”) */
 .tag {
   display: inline-block;
-  padding: 0.25rem 0.6rem;
+  padding: 0.22rem 0.55rem;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255,255,255,0.10);
+  color: rgba(243,245,247,0.92);
+  border: 1px solid rgba(255,255,255,0.16);
   font-size: 0.9rem;
   margin-right: 0.4rem;
   margin-bottom: 0.4rem;
 }
 .tag.alt {
-  background: rgba(122, 30, 44, 0.92);
-  border-color: rgba(122, 30, 44, 0.65);
+  background: rgba(122, 30, 44, 0.22);
+  border-color: rgba(122, 30, 44, 0.55);
 }
 
 /* Details */
-details {
-  padding: 0.85rem 1rem;
-  margin-bottom: 0.75rem;
-}
+details { padding: 0.85rem 1rem; margin-bottom: 0.75rem; }
 details summary {
   cursor: pointer;
   font-weight: 650;
-  color: #fff;
+  color: rgba(243,245,247,0.92);
 }
 
-/* Divider lines inside cards */
-hr {
-  border-color: rgba(255, 255, 255, 0.16);
-}
+/* Teams: keep mapping, but soften the left borders */
+.team-card { padding: 1rem; }
 
-/* ===== Teams: keep your left borders, tuned for dark cards ===== */
-.team-card {
-  padding: 1rem;
-}
 .team-ballaz {
-  border-left: 6px solid var(--cc-burgundy);
+  border-left: 6px solid rgba(122, 30, 44, 0.85);
   padding-left: 0.75rem;
 }
 .team-shotcallaz {
-  border-left: 6px solid rgba(158, 163, 173, 0.85);
+  border-left: 6px solid rgba(158, 163, 173, 0.75);
   padding-left: 0.75rem;
 }
 .team-impalaz {
-  border-left: 6px solid rgba(255, 255, 255, 0.55);
+  border-left: 6px solid rgba(24, 54, 95, 0.85);
   padding-left: 0.75rem;
 }
 
-/* ===== Tables (scoreboard + results) readable on navy ===== */
-figure {
-  margin: 0;
-}
-table {
-  background: transparent;
-  color: #fff;
-}
+/* Tables readable on navy, with subtle separators */
+figure { margin: 0; }
+table { background: transparent; color: rgba(243,245,247,0.92); }
+
 table thead th {
-  color: rgba(255, 255, 255, 0.92);
-  border-bottom-color: rgba(255, 255, 255, 0.16);
+  color: rgba(243,245,247,0.92);
+  border-bottom-color: rgba(255,255,255,0.16);
 }
-table td,
-table th {
-  border-bottom-color: rgba(255, 255, 255, 0.12);
+table td, table th {
+  border-bottom-color: rgba(255,255,255,0.12);
 }
+
 table.scoreboard td:last-child,
 table.scoreboard th:last-child,
 table.results-table td:last-child,
@@ -204,79 +173,60 @@ table.results-table th:last-child {
   font-variant-numeric: tabular-nums;
 }
 
-/* Leader row */
+/* Leader row: highlight with a low-contrast burgundy wash */
 tr.is-leader td {
   font-weight: 800;
-}
-tr.is-leader td:first-child {
-  color: rgba(255, 255, 255, 0.98);
-}
-tr.is-leader td:last-child {
-  color: rgba(255, 255, 255, 0.98);
+  background: linear-gradient(
+    90deg,
+    rgba(122, 30, 44, 0.22),
+    rgba(122, 30, 44, 0.06)
+  );
 }
 
-/* ===== Results layout ===== */
+/* Results layout */
 .results-day {
   margin-top: 1rem;
   padding-top: 0.75rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border-top: 1px solid rgba(255,255,255,0.14);
 }
-.results-day:first-child {
-  border-top: none;
-  padding-top: 0;
-}
-.results-grid-2 {
-  display: grid;
-  gap: 1rem;
-}
+.results-day:first-child { border-top: none; padding-top: 0; }
+
+.results-grid-2 { display: grid; gap: 1rem; }
 @media (min-width: 900px) {
-  .results-grid-2 {
-    grid-template-columns: 1.25fr 0.75fr;
-  }
+  .results-grid-2 { grid-template-columns: 1.25fr 0.75fr; }
 }
 
-/* Pills */
+/* Pills: softer */
 .pill {
   display: inline-block;
-  padding: 0.2rem 0.55rem;
+  padding: 0.18rem 0.5rem;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.10);
-  color: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.09);
+  color: rgba(243,245,247,0.90);
   font-size: 0.9rem;
   margin-right: 0.35rem;
   margin-bottom: 0.35rem;
 }
 .pill.b {
-  border-color: rgba(122, 30, 44, 0.75);
-  background: rgba(122, 30, 44, 0.20);
+  border-color: rgba(122, 30, 44, 0.55);
+  background: rgba(122, 30, 44, 0.18);
 }
 .pill.s {
-  border-color: rgba(158, 163, 173, 0.75);
-  background: rgba(158, 163, 173, 0.16);
+  border-color: rgba(158, 163, 173, 0.55);
+  background: rgba(158, 163, 173, 0.14);
 }
 .pill.i {
-  border-color: rgba(255, 255, 255, 0.40);
-  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(24, 54, 95, 0.55);
+  background: rgba(24, 54, 95, 0.18);
 }
 
 /* Footer */
-footer {
-  margin-top: 2rem;
-}
-footer small {
-  opacity: 0.8;
-}
+footer { margin-top: 2rem; }
+footer small { opacity: 0.85; }
 
-/* Mobile tweaks */
+/* Mobile */
 @media (max-width: 480px) {
-  header.hero {
-    padding-block: 2rem 1rem;
-  }
-  .card,
-  details,
-  .team-card,
-  .results-block {
-    padding: 1rem;
-  }
+  header.hero { padding-block: 2rem 1rem; }
+  .card, details, .team-card, .results-block { padding: 1rem; }
 }
