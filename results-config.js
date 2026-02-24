@@ -26,10 +26,10 @@ window.RESULTS = {
         winnerTeam: "__",
         score: "__",
         playerScores: [
-          { name: "Adam", team: "Ballaz", gross: 92, net: 72 },
-          { name: "Drew", team: "Ballaz", gross: 88, net: 70 },
-          { name: "Joe", team: "Impalaz", gross: 86, net: 69 },
-          { name: "Zion", team: "Impalaz", gross: 90, net: 71 },
+          { name: "Adam", team: "Ballaz", gross: "__", net: "__" },
+          { name: "Drew", team: "Ballaz", gross: "__", net: "__"},
+          { name: "Joe", team: "Impalaz", gross: "__", net: "__" },
+          { name: "Zion", team: "Impalaz", gross: "__", net: "__" },
         ],
       },
       {
