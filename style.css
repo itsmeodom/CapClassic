@@ -1,0 +1,229 @@
+:root {
+  /* Team colors (keep mapping) */
+  --cc-navy: #0b1f3b; /* Impalaz */
+  --cc-burgundy: #7a1e2c; /* Ballaz */
+  --cc-silver: #9ea3ad; /* Shot Callaz */
+
+  /* Golf accents */
+  --cc-forest: #0b3d2e; /* section headers */
+  --cc-gold: #b08d57; /* subheaders */
+
+  /* Pico hints (keep light) */
+  --pico-primary: var(--cc-forest);
+  --pico-secondary: var(--cc-gold);
+  --pico-primary-hover: #082d22;
+  --pico-primary-focus: rgba(11, 61, 46, 0.18);
+
+  /* Slightly richer muted tone */
+  --pico-muted-color: rgba(0, 0, 0, 0.72);
+}
+
+/* Page background (light) */
+body {
+  background: linear-gradient(135deg, rgba(11, 61, 46, 0.05), rgba(176, 141, 87, 0.05));
+}
+
+header.hero {
+  padding-block: 3rem 2rem;
+}
+
+h1 {
+  letter-spacing: -0.02em;
+}
+
+.muted {
+  opacity: 0.8;
+}
+
+.countdown {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.grid-3 {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 900px) {
+  .grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Card style (white cards on light background) */
+.card {
+  background: #ffffff;
+  border: 1px solid var(--pico-muted-border-color);
+  border-radius: 1rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
+  padding: 1.25rem;
+
+  /* hero-style accent stripe + subtle tint */
+  border-top: 6px solid var(--cc-forest);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(11, 61, 46, 0.035));
+}
+
+main .card {
+  margin-bottom: 1rem;
+}
+
+/* Typography color rules */
+h2 {
+  color: var(--cc-forest);
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+h3 {
+  color: var(--cc-gold);
+  margin-top: 0.25rem;
+}
+
+/* Tags */
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: var(--cc-forest);
+  color: white;
+  border: none;
+  font-size: 0.9rem;
+  margin-right: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.tag.alt {
+  background: var(--cc-gold);
+  color: #1b1b1b;
+}
+
+/* Details panels */
+details {
+  background: #ffffff;
+  border: 1px solid var(--pico-muted-border-color);
+  border-radius: 0.9rem;
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.05);
+}
+
+details summary {
+  cursor: pointer;
+  font-weight: 650;
+  color: var(--cc-forest);
+}
+
+/* Teams */
+.team-card {
+  background: #ffffff;
+  border: 1px solid var(--pico-muted-border-color);
+  border-radius: 1rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
+  padding: 1rem;
+}
+
+.team-ballaz {
+  border-left: 6px solid var(--cc-burgundy);
+  padding-left: 0.75rem;
+}
+
+.team-shotcallaz {
+  border-left: 6px solid var(--cc-silver);
+  padding-left: 0.75rem;
+}
+
+.team-impalaz {
+  border-left: 6px solid var(--cc-navy);
+  padding-left: 0.75rem;
+}
+
+/* Scoreboard */
+.scoreboard-wrap {
+  margin-top: 1rem;
+}
+
+table.scoreboard td:last-child,
+table.scoreboard th:last-child {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+tr.is-leader td {
+  font-weight: 800;
+}
+
+/* ===== Results rendering styles ===== */
+.results-day {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--pico-muted-border-color);
+}
+.results-day:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.results-grid-2 {
+  display: grid;
+  gap: 1rem;
+}
+@media (min-width: 900px) {
+  .results-grid-2 {
+    grid-template-columns: 1.25fr 0.75fr;
+  }
+}
+
+.results-block {
+  background: #ffffff;
+  border: 1px solid var(--pico-muted-border-color);
+  border-radius: 0.9rem;
+  padding: 1rem;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.05);
+}
+
+.mono {
+  font-variant-numeric: tabular-nums;
+}
+
+.pill {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--pico-muted-border-color);
+  background: rgba(255, 255, 255, 0.75);
+  font-size: 0.9rem;
+  margin-right: 0.35rem;
+  margin-bottom: 0.35rem;
+}
+.pill.b {
+  border-color: rgba(122, 30, 44, 0.35);
+}
+.pill.s {
+  border-color: rgba(158, 163, 173, 0.65);
+}
+.pill.i {
+  border-color: rgba(11, 31, 59, 0.35);
+}
+
+table.results-table td:last-child,
+table.results-table th:last-child {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+footer {
+  margin-top: 2rem;
+}
+footer small {
+  opacity: 0.75;
+}
+
+@media (max-width: 480px) {
+  header.hero {
+    padding-block: 2rem 1rem;
+  }
+  .card {
+    padding: 1rem;
+  }
+}
