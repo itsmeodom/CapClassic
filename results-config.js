@@ -6,12 +6,12 @@ window.RESULTS = {
   day1: {
     title: "Day 1 — Apple Mountain (Paired scramble)",
     leaderboard: [
-      { place: 1, pairName: "Team 1", points: 4, team: "Ballaz", players: "Adam / Drew" },
-      { place: 2, pairName: "Team 2", points: 3, team: "Shot Callaz", players: "Cameron / Ford" },
-      { place: 3, pairName: "Team 3", points: 2, team: "Impalaz", players: "Joe / Zion" },
-      { place: 4, pairName: "Team 4", points: 1, team: "Ballaz", players: "Sean / Mitch" },
-      { place: 5, pairName: "Team 5", points: 0, team: "Impalaz", players: "Eric / Jared" },
-      { place: 6, pairName: "Team 6", points: 0, team: "Shot Callaz", players: "Rane / Dan" },
+      { place: 1, pairName: "Team 1", points: 4, team: "__", players: "__" },
+      { place: 2, pairName: "Team 2", points: 3, team: "__", players: "__" },
+      { place: 3, pairName: "Team 3", points: 2, team: "__", players: "__" },
+      { place: 4, pairName: "Team 4", points: 1, team: "__", players: "__" },
+      { place: 5, pairName: "Team 5", points: 0, team: "__", players: "__" },
+      { place: 6, pairName: "Team 6", points: 0, team: "__", players: "__" },
     ],
   },
 
@@ -23,8 +23,8 @@ window.RESULTS = {
         label: "G1",
         teamA: { players: ["Adam", "Drew"], team: "Ballaz" },
         teamB: { players: ["Joe", "Zion"], team: "Impalaz" },
-        winnerTeam: "Ballaz",
-        score: "104-100",
+        winnerTeam: "__",
+        score: "__",
         playerScores: [
           { name: "Adam", team: "Ballaz", gross: 92, net: 72 },
           { name: "Drew", team: "Ballaz", gross: 88, net: 70 },
@@ -60,8 +60,8 @@ window.RESULTS = {
       },
     ],
     bestNet: {
-      name: "Dan",
-      team: "Shot Callaz",
+      name: "__",
+      team: "__",
       net: "__",
       points: 1,
     },
@@ -74,7 +74,7 @@ window.RESULTS = {
         label: "G1-A",
         p1: { name: "Cameron", team: "Shot Callaz", gross: "__", net: "__" },
         p2: { name: "Mitch", team: "Ballaz", gross: "__", net: "__" },
-        winnerTeam: "Ballaz",
+        winnerTeam: "____",
         points: "3",
       },
       {
@@ -116,16 +116,16 @@ window.RESULTS = {
 
     // New: Day 3 best net score (+1 by default)
     bestNet: {
-      name: "Rane",
-      team: "Shot Callaz",
+      name: "____",
+      team: "____",
       net: "__",
       points: 1,
     },
 
     // New: Best combined net (Day 2 + Day 3) bonus (set points as desired)
     bestCombined: {
-      name: "Rane",
-      team: "Shot Callaz",
+      name: "____",
+      team: "____",
       net: "__",     // combined net
       points: 2,     // set this to whatever your rules are
     },
