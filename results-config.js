@@ -24,7 +24,7 @@ window.RESULTS = {
         teamA: { players: ["Adam", "Drew"], team: "Ballaz" },
         teamB: { players: ["Joe", "Zion"], team: "Impalaz" },
         winnerTeam: "Ballaz",
-        score: "2 up",
+        score: "104-100",
         playerScores: [
           { name: "Adam", team: "Ballaz", gross: 92, net: 72 },
           { name: "Drew", team: "Ballaz", gross: 88, net: 70 },
