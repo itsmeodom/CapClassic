@@ -6,12 +6,12 @@ window.RESULTS = {
   day1: {
     title: "Day 1 — Apple Mountain (Paired scramble)",
     leaderboard: [
-      { place: 1, pairName: "Team 1", points: 4, team: "__", players: "__" },
-      { place: 2, pairName: "Team 2", points: 3, team: "__", players: "__" },
-      { place: 3, pairName: "Team 3", points: 2, team: "__", players: "__" },
-      { place: 4, pairName: "Team 4", points: 1, team: "__", players: "__" },
-      { place: 5, pairName: "Team 5", points: 0, team: "__", players: "__" },
-      { place: 6, pairName: "Team 6", points: 0, team: "__", players: "__" },
+      { place: 1, pairName: "Team 1", points: 4, team: "Impalaz", players: "Jared/Eric" },
+      { place: 2, pairName: "Team 2", points: 2.5, team: "Ballaz", players: "Mitch/Sean" },
+      { place: 3, pairName: "Team 2", points: 2.5, team: "Shot Callaz", players: "Ford/Cameron" },
+      { place: 4, pairName: "Team 4", points: 1, team: "Impalaz", players: "Joe/Zion" },
+      { place: 5, pairName: "Team 5", points: 0, team: "Shot Callaz", players: "Rane/Dan" },
+      { place: 6, pairName: "Team 6", points: 0, team: "Ballaz", players: "Drew/Adam" },
     ],
   },
 
