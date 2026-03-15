@@ -23,8 +23,8 @@ window.RESULTS = {
         label: "G1",
         teamA: { players: ["Adam", "Drew"], team: "Ballaz" },
         teamB: { players: ["Joe", "Zion"], team: "Impalaz" },
-        winnerTeam: "__",
-        score: "__",
+        winnerTeam: "Ballaz",
+        score: "3",
         playerScores: [
           { name: "Adam", team: "Ballaz", gross: "__", net: "__" },
           { name: "Drew", team: "Ballaz", gross: "__", net: "__"},
@@ -36,8 +36,8 @@ window.RESULTS = {
         label: "G2",
         teamA: { players: ["Cameron", "Ford"], team: "Shot Callaz" },
         teamB: { players: ["Sean", "Mitch"], team: "Ballaz" },
-        winnerTeam: "____",
-        score: "____",
+        winnerTeam: "Shot Callaz",
+        score: "3",
         playerScores: [
           { name: "Cameron", team: "Shot Callaz", gross: "__", net: "__" },
           { name: "Ford", team: "Shot Callaz", gross: "__", net: "__" },
@@ -49,8 +49,8 @@ window.RESULTS = {
         label: "G3",
         teamA: { players: ["Eric", "Jared"], team: "Impalaz" },
         teamB: { players: ["Rane", "Dan"], team: "Shot Callaz" },
-        winnerTeam: "____",
-        score: "____",
+        winnerTeam: "Impalaz",
+        score: "3",
         playerScores: [
           { name: "Eric", team: "Impalaz", gross: "__", net: "__" },
           { name: "Jared", team: "Impalaz", gross: "__", net: "__" },
@@ -61,7 +61,7 @@ window.RESULTS = {
     ],
     bestNet: {
       name: "__",
-      team: "__",
+      team: "Ballaz",
       net: "__",
       points: 1,
     },
