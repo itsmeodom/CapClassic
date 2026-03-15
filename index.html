@@ -356,11 +356,10 @@ setInterval(tick, 1000);
       const TEAMS = ["Ballaz", "Shot Callaz", "Impalaz"];
       const TEAM_PILLS = { Ballaz: "b", "Shot Callaz": "s", Impalaz: "i" };
 
-      function toInt(x) {
-        const n = Number(x);
-        return Number.isFinite(n) ? Math.trunc(n) : 0;
-      }
-
+function toInt(x) {
+  const n = Number(x);
+  return Number.isFinite(n) ? n : 0;
+}
       function pill(team) {
         const cls = TEAM_PILLS[team] || "";
         return `<span class="pill ${cls}">${team}</span>`;
