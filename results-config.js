@@ -124,10 +124,10 @@ window.RESULTS = {
 
     // New: Best combined net (Day 2 + Day 3) bonus (set points as desired)
     bestCombined: {
-      name: "____",
-      team: "____",
-      net: "__",     // combined net
-      points: 2,     // set this to whatever your rules are
+      name: "Adam",
+      team: "Ballaz",
+      net: "148",     // combined net
+      points: 1,     // set this to whatever your rules are
     },
   },
 };
