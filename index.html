@@ -32,51 +32,69 @@
       <h1>Capital Classic 2026</h1>
       <p class="muted"><strong>March 13–March 15</strong></p>
 
-      <article class="card">
-        <h3 style="margin-bottom: 0.25rem;">Countdown to tee off</h3>
-        <p class="muted" style="margin-top: 0;">
-          Counting down to <strong>Friday, March 13, 2026</strong>
-        </p>
+<article class="card">
+  <h3 style="margin-bottom: 0.25rem;">Combined Individual Leaderboard</h3>
+  <p class="muted" style="margin-top: 0;">
+    Day 2 + Day 3 totals, sorted by combined net
+  </p>
 
-        <div class="grid-1" aria-live="polite">
-    <strong><article>
-    <span class="countdown" id="cd-days">--</span>
-    <span>Days | </span>
-    <span class="countdown" id="cd-hours">--</span>
-    <span>Hours | </span>
+  <div style="overflow-x: auto;">
+    <table id="leaderboardTable" class="scoreboard" role="grid">
+      <thead>
+        <tr>
+          <th scope="col" onclick="sortLeaderboard(0)">Name</th>
+          <th scope="col" onclick="sortLeaderboard(1)">Team</th>
+          <th scope="col" onclick="sortLeaderboard(2)">D1 Gross</th>
+          <th scope="col" onclick="sortLeaderboard(3)">D2 Gross</th>
+          <th scope="col" onclick="sortLeaderboard(4)">Combined Gross</th>
+          <th scope="col" onclick="sortLeaderboard(5)">D1 Net</th>
+          <th scope="col" onclick="sortLeaderboard(6)">D2 Net</th>
+          <th scope="col" onclick="sortLeaderboard(7)">Combined Net</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Adam</td><td>Ballaz</td><td>113</td><td>116</td><td>229</td><td>70</td><td>78</td><td>148</td></tr>
+        <tr><td>Ford</td><td>Shot Callaz</td><td>103</td><td>93</td><td>196</td><td>78</td><td>71</td><td>149</td></tr>
+        <tr><td>Rane</td><td>Shot Callaz</td><td>103</td><td>100</td><td>203</td><td>75</td><td>75</td><td>150</td></tr>
+        <tr><td>Jared</td><td>Impalaz</td><td>103</td><td>108</td><td>211</td><td>72</td><td>81</td><td>153</td></tr>
+        <tr><td>Cameron</td><td>Shot Callaz</td><td>99</td><td>80</td><td>179</td><td>86</td><td>69</td><td>155</td></tr>
+        <tr><td>Joe</td><td>Impalaz</td><td>104</td><td>108</td><td>212</td><td>75</td><td>87</td><td>162</td></tr>
+        <tr><td>Sean</td><td>Ballaz</td><td>106</td><td>98</td><td>204</td><td>85</td><td>79</td><td>164</td></tr>
+        <tr><td>Eric</td><td>Impalaz</td><td>111</td><td>108</td><td>219</td><td>83</td><td>83</td><td>166</td></tr>
+        <tr><td>Drew</td><td>Ballaz</td><td>117</td><td>113</td><td>230</td><td>85</td><td>85</td><td>170</td></tr>
+        <tr><td>Dan</td><td>Shot Callaz</td><td>136</td><td>134</td><td>270</td><td>85</td><td>88</td><td>173</td></tr>
+        <tr><td>Zion</td><td>Impalaz</td><td>115</td><td>110</td><td>225</td><td>90</td><td>88</td><td>178</td></tr>
+        <tr><td>Mitch</td><td>Ballaz</td><td>106</td><td>105</td><td>211</td><td>89</td><td>90</td><td>179</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-    <span class="countdown" id="cd-mins">--</span>
-    <span>Minutes</span>
-  </article></strong>
-</div>
-</div>
+  <p class="muted" style="margin-bottom: 0;">
+    <span class="tag">Northern California</span>
+    <span class="tag">12 players</span>
+    <span class="tag">3 teams</span>
+    <span class="tag">3 days</span>
+  </p>
 
-        <p class="muted" style="margin-bottom: 0;">
-          <span class="tag">Northern California</span>
-          <span class="tag">12 players</span>
-          <span class="tag">3 teams</span>
-          <span class="tag">3 days</span>
-        </p>
+  <div class="scoreboard-wrap">
+    <h3 style="margin-bottom: 0.25rem;">Scoreboard</h3>
+    <p class="muted" style="margin-top: 0;">
+      Team points
+    </p>
 
-        <div class="scoreboard-wrap">
-          <h3 style="margin-bottom: 0.25rem;">Scoreboard</h3>
-          <p class="muted" style="margin-top: 0;">
-            Team points
-          </p>
-
-          <figure>
-            <table class="scoreboard" role="grid">
-              <thead>
-                <tr>
-                  <th scope="col">Team</th>
-                  <th scope="col">Points</th>
-                </tr>
-              </thead>
-              <tbody id="scoreboardBody"></tbody>
-            </table>
-          </figure>
-        </div>
-      </article>
+    <figure>
+      <table class="scoreboard" role="grid">
+        <thead>
+          <tr>
+            <th scope="col">Team</th>
+            <th scope="col">Points</th>
+          </tr>
+        </thead>
+        <tbody id="scoreboardBody"></tbody>
+      </table>
+    </figure>
+  </div>
+</article>
     </header>
 
 <main class="container">
@@ -307,48 +325,37 @@ Ancil Hoffman
     <script src="./results-config.js"></script>
 
     <script>
-      // =========================
-      // Countdown
-      // =========================
-      const target = new Date(2026, 2, 13, 13, 0, 0); // Mar 13, 2026 @ 1:00 PM (local)      const elDays = document.getElementById("cd-days");
+const leaderboardSortDirections = {};
 
-      function tick() {
-        const elDays = document.getElementById("cd-days");
-const elHours = document.getElementById("cd-hours");
-const elMins = document.getElementById("cd-mins");
+function sortLeaderboard(colIndex) {
+  const table = document.getElementById("leaderboardTable");
+  if (!table) return;
 
-function pad2(n) {
-  return String(n).padStart(2, "0");
+  const tbody = table.querySelector("tbody");
+  const rows = Array.from(tbody.querySelectorAll("tr"));
+  const isNumeric = colIndex >= 2;
+
+  leaderboardSortDirections[colIndex] = !leaderboardSortDirections[colIndex];
+  const ascending = leaderboardSortDirections[colIndex];
+
+  rows.sort((a, b) => {
+    const aText = a.children[colIndex].textContent.trim();
+    const bText = b.children[colIndex].textContent.trim();
+
+    if (isNumeric) {
+      return ascending
+        ? Number(aText) - Number(bText)
+        : Number(bText) - Number(aText);
+    }
+
+    return ascending
+      ? aText.localeCompare(bText)
+      : bText.localeCompare(aText);
+  });
+
+  tbody.innerHTML = "";
+  rows.forEach((row) => tbody.appendChild(row));
 }
-
-function tick() {
-  const now = new Date();
-  let diffMs = target - now;
-
-  if (diffMs <= 0) {
-    elDays.textContent = "0";
-    elHours.textContent = "00";
-    elMins.textContent = "00";
-    return;
-  }
-
-  const totalMinutes = Math.floor(diffMs / 60000);
-
-  const days = Math.floor(totalMinutes / (60 * 24));
-  const hours = Math.floor((totalMinutes - days * 60 * 24) / 60);
-  const mins = totalMinutes % 60;
-
-  elDays.textContent = String(days);
-  elHours.textContent = pad2(hours);
-  elMins.textContent = pad2(mins);
-}
-
-tick();
-setInterval(tick, 1000);
-      }
-
-      tick();
-      setInterval(tick, 1000);
 
       // =========================
       // Results + Auto-calc
